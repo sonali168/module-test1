@@ -1,0 +1,386 @@
+:root{
+    --bg-light-green:#8CC461;
+    --white:#FFFFFF;
+    --blue:#0074B6;
+    --violet:#BD00FF;
+    --orange:#FFA943;
+    --red:#FF0000;
+    --green:#004429;
+    --parrot-green:#2E9A25;
+    --light-gray:#656565;
+    --black:#252525;
+    --shadow:#000000;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--bg-light-green);
+    min-height: 100vh;
+    color: var(--white);
+}
+
+.container{
+    position: relative;
+    max-width: 100vw;
+    /* max-width: 700px; */
+    margin: 0 auto;
+    padding-top: 2rem;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 150px;
+    border: 3px solid var(--white);
+    border-radius: 20px;padding: 1rem 1.5rem 1rem 2rem;
+
+    margin: 0 auto;
+    width: 50%;
+}
+
+
+.logo p{
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+.score{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    border-radius: 8px;
+    text-align: center;
+    gap: 1rem;
+    margin: 0 10px;  
+}
+
+.computer-score-title, .user-score-title{
+    color: var(--light-gray);
+    font-size: 1rem;
+    padding: 10px;
+}
+
+.user-score-title{
+    padding: 10px 25px;
+}
+
+.computer-score, .user-score{
+    background-color: var(--white);
+    border-radius: 8px;
+}
+
+
+
+.computer-score-number .user-score-number{
+    color: var(--black);
+    font-size: 5rem;
+    font-weight: bold;
+}
+
+/* game section */
+.game{
+    position: relative;
+    display: grid;
+    grid-template-columns: (repeat(2, 1fr));
+    grid-template-areas: 
+    "rock scissors"
+    "paper paper";
+    place-items: center;
+    height: 30rem;
+    padding-top: 4rem;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.game::before{
+    content: "";
+    position: absolute;
+    width: 40%;
+    height: 40%;
+    left: 28%;
+    top: 35%;
+    background-image: url(./img/R.png);
+    background-repeat: no-repeat;
+    /* background-position:center; */
+    background-size: 100%;
+    background-position-x: center;
+    z-index: -1;
+}
+
+
+.choice-btn{
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+}
+
+.choice{
+    position: relative;
+    width: 10rem;
+    height: 10rem;
+    background: var(--white);
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    box-shadow: 3px 0px 21px 1px rgba(0, 0, 0, 0.2) inset;
+}
+
+
+.choice::before{
+    content: "";
+    position: absolute;
+    left: -10%;
+    top: -10%;
+    width: 120%;
+    height: 120%;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.choice img{
+    transform: scale(1.5);
+}
+.choice.rock::before{
+    background: var(--blue);
+    box-shadow: 3px 0px 21px 1px rgba(0, 0, 0, 0.2) inset;
+}
+
+.choice.scissors::before{
+    background: var(--violet);
+    box-shadow: 3px 0px 21px 1px rgba(0, 0, 0, 0.2) inset;
+}
+
+.choice.paper::before{
+    background: var(--orange);
+    box-shadow: 3px 0px 21px 1px rgba(0, 0, 0, 0.2) inset;
+}
+
+.choice-btn[data-choice="rock"]{
+    grid-area: rock;
+}
+
+.choice-btn[data-choice="scissors"]{
+    grid-area: scissors;
+}
+
+
+.choice-btn[data-choice="paper"]{
+    grid-area: paper;
+}
+
+.results{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    place-items: center;
+    grid-template-areas: 
+    "you-title  ai-title"
+    "you-picked  ai-picked";
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.results_heading{
+    font-size: 1.5rem;
+    letter-spacing: 0.1em;
+    padding: 4rem 0 8rem;
+    
+}
+
+.results_result{
+    min-width: 10rem;
+    min-height: 10rem;
+    background: var(--bg-light-green);
+    border-radius: 50%;
+}
+.results_heading:first-of-type{
+    grid-area: you-title;
+}
+
+.results_heading:last-of-type{
+    grid-area: ai-title;
+}
+
+.results_result:first-of-type{
+    grid-area: you-picked;
+}
+
+.results_result:last-of-type{
+    grid-area: ai-picked;
+}
+
+.hidden{
+    display: none;
+}
+
+.results.show-winner{
+    /* display: grid; */
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: 
+    "you-title . ai-title"
+    "you-picked result-winner ai-picked";
+    
+}
+
+.winner .choice::after{
+    box-shadow: 0 0 0 40px #3B6720, 0 0 0 80px #1DA82B, 0 0 0 130px #2E9A25;
+    animation:  winner 1s ease forwards;
+}
+
+@keyframes winner{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+.results_winner{
+    grid-area: result_winner;
+    display: grid;
+    place-items: center;
+   
+}
+
+.results_text{
+    font-size: 2rem;
+    padding-bottom: 1rem;
+}
+
+.results_text1{
+    font-size: 1rem;
+    padding-bottom: 1rem;
+}
+
+.play-again{
+    background: var(--white);
+    color: #6B6B6B;
+    outline: none;
+    border: 2px solid transparent;
+    border-radius: 0.6rem;
+    padding: 0.6rem 1rem;
+    font-family: inherit;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+
+
+/* rule section */
+
+.rules-btn{
+    position: absolute;
+    bottom: 0;
+    right: 2rem;
+    background: none;
+    outline: none;
+    border: 2px solid var(--white);
+    border-radius: 0.6rem;
+    color: var(--white);
+    padding: 0.6rem 2.5rem;
+    font-family: inherit;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+}
+
+.rule_wrapper{
+    position: absolute;
+    right: 0;
+    /* bottom: 5rem; */
+    bottom: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    max-width: 20%;
+    background: var(--green);
+    color: var(--white);
+    padding: 25px;
+    margin-right: 15px;
+    border: 5px solid var(--white);
+    border-radius: 20px;
+}
+
+.close-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: red;
+    border: 6px solid white;
+    width: 18%;
+    height: 18%;
+    border-radius: 100%;
+    padding: 0.5rem;
+    position: absolute;
+    right: -1.25rem;
+    top: -1.25rem;
+}
+
+.rule_box_header{
+    font-size: 2rem;
+    text-align: center;
+}
+.rule_content li::marker {
+    color: #ffa943;
+    font-size: 1.5rem;
+    padding-left: 15px;
+} 
+
+/* winner page */
+/* next button */
+.next-btn{
+    position: absolute;
+    bottom:-4rem;
+    right: 2rem;
+    background: none;
+    outline: none;
+    border: 2px solid var(--white);
+    border-radius: 0.6rem;
+    color: var(--white);
+    padding: 0.6rem 2.8rem;
+    font-family: inherit;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.banner{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    /* align-items: center; */
+    text-align: center;
+    align-content: center;
+    background-image: url('/img/winner_bg_star.png');
+    background-repeat: no-repeat;
+    background-position-x: center; 
+    margin-top: 5%;
+}
+
+.banner img{
+    margin-top: 5rem;
+    width: 50%;
+    height: 50%;
+}
+
+.banner .head1{
+    font-size: 5rem;
+    letter-spacing: 0.1em;
+}
+
+.banner .head2{
+    font-size: 2rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+}
+

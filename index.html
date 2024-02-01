@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz@9..40&family=Delius+Unicase:wght@400;700&family=Inter:wght@400;600&family=Roboto&display=swap"
+        rel="stylesheet">
+    <title>ROCK-PAPER-SCISSORS</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+</head>
+
+<body>
+    <div class="container">
+        <!-- header section -->
+        <header class="header">
+            <div class="logo">
+                <p>ROCK</p>
+                <p>PAPER</p>
+                <p>SCISSORS</p>
+            </div>
+            <div class="score">
+                <div class="computer-score">
+                    <div class="computer-score-title">
+                        <p>COMPUTER <br>SCORE</p>
+                        <p class="computer_score_number" id="comp_score" style="font-size: 2rem;">0</p>
+                    </div>
+                </div>
+
+                <div class="user-score">
+                    <div class="user-score-title">
+                        <p>YOUR <br>SCORE</p>
+                        <p class="user_score_number" id="user_score" style="font-size: 2rem;">0</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- game section -->
+        <section class="game">
+            <button class="choice-btn" data-choice="rock">
+                <div class="choice rock">
+                    <img src="/img/rock.png" alt="rock">
+                </div>
+            </button>
+            
+            <button class="choice-btn" data-choice="scissors">
+                <div class="choice scissors">
+                    <img src="/img/scissors.png" alt="scissors">
+                </div>
+            </button>
+            <div class="line line2"></div>
+            <button class="choice-btn" data-choice="paper">
+                <div class="choice paper">
+                    <img src="/img/paper.png" alt="paper">
+                </div>
+            </button>
+        </section>
+
+        <section class="results hidden">
+            <h2 class="results_heading">YOU PICKED</h2>
+            <h2 class="results_heading">PC PICKED</h2>
+            <div class="results_result"></div>
+
+            <!-- winner decision section -->
+            <div class="results_winner hidden">
+                <h3 class="results_text"></h3>
+                <h2 class="results_text1">AGAINST PC</h2>
+                <button class="play-again">PLAY AGAIN</button>
+            </div>
+
+            <div class="results_result"></div>
+        </section>
+
+        <!-- rule section -->
+        <button class="rules-btn rule" tabindex="1">RULES</button>
+
+        <div class="rule_wrapper" >
+            <div class="rule_box">
+              <div class="rule_box_header">
+                <p>Game Rules</p>
+              </div>
+              <div class="close_btn">
+                <img src="/img/X.png" alt="close" class="close-btn" id="myForm" >
+              </div>
+              <div class="rule_content">
+                <ul>
+                  <li class="list_item" style="list-style-type:square">
+                    Rock beats scissors, scissors beat paper, and paper beats rock.
+                  </li>
+                  <li class="list_item" style="list-style-type:square">
+                    Agree ahead of time whether you’ll count off “rock, paper,
+                    scissors, shoot” or just “rock, paper, scissors.”
+                  </li>
+                  <li class="list_item" style="list-style-type:square">
+                    Use rock, paper, scissors to settle minor decisions or simply play
+                    to pass the time
+                  </li>
+                  <li class="list_item" style="list-style-type:square">
+                    If both players lay down the same hand, each player lays down
+                    another hand
+                  </li>
+                </ul>
+              </div>
+            </div>
+        </div> 
+
+        <!-- next button -->
+        <div class="next_btn_section hidden">
+            <a class="next-btn" href="/winner.html">NEXT</a>
+        </div>
+
+        <script src="/script.js"></script>
+        <!-- closer of conttainer div -->
+    </div>
+
+
+
+
+
+</body>
+
+</html>
